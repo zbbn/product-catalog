@@ -3,6 +3,10 @@ import { productStore } from '../data/productStorage';
 
 export const productsRouter = Router();
 
+/**
+ * Posts a new product to productStorage, validates the type for each field
+ */
+
 productsRouter.post('/products', (req: Request, res: Response) => {
     const body = req.body ?? {};
 
@@ -33,9 +37,17 @@ productsRouter.post('/products', (req: Request, res: Response) => {
     res.status(201).json(created);
 });
 
+/**
+* Gets all products from the productStorage
+*/
+
 productsRouter.get('/products', (_req: Request, res: Response) => {
     return res.json(productStore.getAll());
 });
+
+/**
+ * Gets one product by its ID from the productStorage
+ */
 
 productsRouter.get('/products/:id', (req: Request, res: Response) => {
     const product = productStore.getById(req.params.id);
