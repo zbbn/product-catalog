@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (_req, res) => {
-    res.json({ status: 'ok', message: 'Product catalog API is running.', endpoints: ['/status'] });
+    res.json({ status: 'ok', message: 'Product catalog API is running.', endpoints: ['/status', '/products'] });
 });
 
 app.use('/', productsRouter);
