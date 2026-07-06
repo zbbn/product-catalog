@@ -4,15 +4,19 @@ import { NewProduct, Product } from '../types';
 
 /**
  * ProductStore is responsible for managing the product data in memory. 
- * Used to retrieve all products, get a product by its ID, and add a new product to the store. 
+ * Used to retrieve all products, get a product by its ID, add a new product to the store and return the amount of products. 
  * The products are initialized with mock data from the mockProducts array.
  */
 
 class ProductStorage {
     private products: Product[] = [...mockProducts];
 
-    getAll(): Product[] {
-        return this.products;
+    getAll(page?: number, limit?: number): Product[] {
+        if (page === undefined || limit === undefined) {
+            return this.products;
+        }
+        const start = (page - 1) * limit;
+        return this.products.slice(start, start + limit);
     }
 
     getById(id: string): Product | undefined {
@@ -24,6 +28,11 @@ class ProductStorage {
         this.products.push(product);
         return product;
     }
+
+    count(): number {
+        return this.products.length;
+    }
+
 }
 
-export const productStore = new ProductStorage();
+export const productStorage = new ProductStorage();
