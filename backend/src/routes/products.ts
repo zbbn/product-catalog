@@ -13,10 +13,10 @@ productsRouter.post('/products', (req: Request, res: Response) => {
     if (!body.name.trim() || typeof body.name !== 'string') {
         return res.status(400).json({ error: 'name is required' });
     }
-    if (!body.category || typeof body.category !== 'string') {
+    if (!body.category.trim() || typeof body.category !== 'string') {
         return res.status(400).json({ error: 'category is required' });
     }
-    if (!body.description || typeof body.description !== 'string') {
+    if (!body.description.trim() || typeof body.description !== 'string') {
         return res.status(400).json({ error: 'description is required' });
     }
     if (typeof body.price !== 'number' || body.price < 0) {
