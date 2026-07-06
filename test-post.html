@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Product POST Tester</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 500px;
+      margin: 40px auto;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 6px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    pre {
+      background: #f0f0f0;
+      padding: 10px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>POST /products tester</h2>
+
+  <label>API URL</label>
+  <input id="url" value="http://localhost:3000/products">
+
+  <label>Name</label>
+  <input id="name" value="Test Product">
+
+  <label>Category</label>
+  <input id="category" value="Test">
+
+  <label>Description</label>
+  <input id="description" value="A test description">
+
+  <label>Price</label>
+  <input id="price" type="number" value="10">
+
+  <label>Image URL</label>
+  <input id="imageUrl" value="http://example.com/image.png">
+
+  <button onclick="sendPost()">Send POST</button>
+
+  <h3>Response</h3>
+  <pre id="output">(nothing sent yet)</pre>
+
+  <script>
+    async function sendPost() {
+      const url = document.getElementById('url').value;
+      const body = {
+        name: document.getElementById('name').value,
+        category: document.getElementById('category').value,
+        description: document.getElementById('description').value,
+        price: Number(document.getElementById('price').value),
+        imageUrl: document.getElementById('imageUrl').value,
+      };
+
+      const output = document.getElementById('output');
+      output.textContent = 'Sending...';
+
+      try {
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        const data = await res.json();
+        output.textContent = `Status: ${res.status}\n\n${JSON.stringify(data, null, 2)}`;
+      } catch (err) {
+        output.textContent = `Error: ${err.message}\n\n(If this is a CORS error, make sure app.use(cors()) is enabled on the server.)`;
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -41,12 +41,34 @@ npm start
 product-catalog/
 ├── backend/
 │   └── src/
-│       └── server.ts       # Express server entry point
+│       └── data/
+│           └── mockProducts.ts         # List of IKEA products to load into memory
+│           └── productStorage.ts       # Add IKEA products + functions to get, add, count and search
+│       └── routes/
+│           └── products.ts             # API Methods 
+│       └── search/
+│           └── damerauLevenshtein.ts   # Fuzzy search algorithm
+│       └── server.ts                   # Express server entry point
+│       └── types.ts                    # Interface with product types      
 ├── package.json            # Project dependencies and scripts
 ├── tsconfig.json          # TypeScript configuration
 ├── .gitignore             # Git ignore rules
 └── README.md              # This file
 ```
+
+
+
+## Available Scripts
+
+- `npm run dev` - Start the development server with ts-node
+- `npm start` - Start the server with Node.js
+
+## How to use
+
+- `localhost:$PORT` - See status, message, and endpoints of the API
+- `localhost:$PORT/products` - See all products/post products
+- `localhost:$PORT/products/$id` - See specific product based on id
+- `localhost:$PORT/search?=term` - Search for a specific productname
 
 ## Configuration
 
@@ -55,11 +77,6 @@ The server runs on port `3000` by default. You can change this by setting the `P
 ```bash
 PORT=5000 npm run dev
 ```
-
-## Available Scripts
-
-- `npm run dev` - Start the development server with ts-node
-- `npm start` - Start the server with Node.js
 
 ## License
 
