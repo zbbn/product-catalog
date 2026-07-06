@@ -10,7 +10,7 @@ export const productsRouter = Router();
 productsRouter.post('/products', (req: Request, res: Response) => {
     const body = req.body ?? {};
 
-    if (!body.name || typeof body.name !== 'string') {
+    if (!body.name.trim() || typeof body.name !== 'string') {
         return res.status(400).json({ error: 'name is required' });
     }
     if (!body.category || typeof body.category !== 'string') {
@@ -35,6 +35,38 @@ productsRouter.post('/products', (req: Request, res: Response) => {
     });
 
     res.status(201).json(created);
+});
+
+/**
+ * Fuzzy search by name
+ */
+
+productsRouter.get('/search', (req: Request, res: Response) => {
+    const term = req.query.term;
+
+    if (typeof term !== 'string' || !term.trim()) {
+        return res.status(400).json({ error: 'term is required' });
+    }
+
+    const page = req.query.page ? Number(req.query.page) : 1;
+    const limit = req.query.limit ? Number(req.query.limit) : 10;
+
+    if (!Number.isInteger(page) || !Number.isInteger(limit) || page < 1 || limit < 1) {
+        return res.status(400).json({ error: 'page and limit must be positive integers' });
+    }
+
+    const matched = productStorage.search(term);
+    const total = matched.length;
+    const start = (page - 1) * limit;
+    const products = matched.slice(start, start + limit);
+
+    return res.json({
+        products,
+        page,
+        limit,
+        total,
+        totalPages: Math.ceil(total / limit),
+    });
 });
 
 /**
