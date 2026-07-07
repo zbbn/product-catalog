@@ -19,7 +19,7 @@ productsRouter.post('/products', (req: Request, res: Response) => {
     if (typeof body.description !== 'string' || !body.description.trim()) {
         return res.status(400).json({ error: 'description is required' });
     }
-    if (typeof body.price !== 'number' || body.price < 0) {
+    if (typeof body.price !== 'number' || !Number.isFinite(body.price) || body.price <= 0) {
         return res.status(400).json({ error: 'price must be a positive number' });
     }
     if (typeof body.imageUrl !== 'string' || !body.imageUrl.trim()) {
@@ -27,11 +27,11 @@ productsRouter.post('/products', (req: Request, res: Response) => {
     }
 
     const created = productStorage.add({
-        name: body.name,
-        category: body.category,
-        description: body.description,
+        name: body.name.trim(),
+        category: body.category.trim(),
+        description: body.description.trim(),
         price: body.price,
-        imageUrl: body.imageUrl,
+        imageUrl: body.imageUrl.trim(),
     });
 
     res.status(201).json(created);
@@ -48,10 +48,14 @@ productsRouter.get('/search', (req: Request, res: Response) => {
         return res.status(400).json({ error: 'term is required' });
     }
 
+    if (term.trim().length > 100) {
+        return res.status(400).json({ error: 'term must be 100 characters or less' });
+    }
+
     const page = req.query.page ? Number(req.query.page) : 1;
     const limit = req.query.limit ? Number(req.query.limit) : 10;
 
-    if (!Number.isInteger(page) || !Number.isInteger(limit) || page < 1 || limit < 1) {
+    if (!Number.isInteger(page) || !Number.isInteger(limit) || page < 1 || limit < 1 || limit > 100) {
         return res.status(400).json({ error: 'page and limit must be positive integers' });
     }
 
@@ -78,7 +82,7 @@ productsRouter.get('/products', (req: Request, res: Response) => {
     const limit = req.query.limit ? Number(req.query.limit) : 10;
 
 
-    if (!Number.isInteger(page) || !Number.isInteger(limit) || page < 1 || limit < 1) {
+    if (!Number.isInteger(page) || !Number.isInteger(limit) || page < 1 || limit < 1 || limit > 100) {
         return res.status(400).json({ error: 'page and limit must be positive integers' });
     }
 
