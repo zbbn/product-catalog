@@ -22,7 +22,7 @@ productsRouter.post('/products', (req: Request, res: Response) => {
     if (typeof body.price !== 'number' || body.price < 0) {
         return res.status(400).json({ error: 'price must be a positive number' });
     }
-    if (typeof body.imageUrl !== 'string' || !body.imageUrl) {
+    if (typeof body.imageUrl.trim() !== 'string' || !body.imageUrl) {
         return res.status(400).json({ error: 'imageUrl is required' });
     }
 

@@ -35,6 +35,8 @@ To run the server in production mode:
 npm start
 ```
 
+The server will start on **http://localhost:3000**
+
 ## Project Structure
 
 ```
@@ -57,18 +59,72 @@ product-catalog/
 ```
 
 
-
 ## Available Scripts
 
 - `npm run dev` - Start the development server with ts-node
 - `npm start` - Start the server with Node.js
+- `npm run build` - Compile TypeScript only, without starting the server
 
 ## How to use
 
-- `localhost:$PORT` - See status, message, and endpoints of the API
-- `localhost:$PORT/products` - See all products/post products
-- `localhost:$PORT/products/$id` - See specific product based on id
-- `localhost:$PORT/search?=term` - Search for a specific productname
+## API Endpoints
+
+| Method | Endpoint         | Description                                       |
+|--------|------------------|---------------------------------------------------|
+| GET    | `/`              | API status, message, and list of endpoints        |
+| GET    | `/status`        | Health check with current timestamp               |
+| GET    | `/products`      | Paginated list of all products                    |
+| POST   | `/products`      | Add a new product                                 |
+| GET    | `/products/:id`  | Get a single product by ID                        |
+| GET    | `/search?=term`  | Fuzzy search for products by name                 |
+
+### `GET /products`
+
+Query params: `page` (default `1`), `limit` (default `10`).
+
+```
+GET localhost:3000/products?page=1&limit=10
+```
+
+### `POST /products`
+
+Body (JSON):
+
+```json
+{
+  "name": "Test Product",
+  "category": "Test",
+  "description": "A test description",
+  "price": 10,
+  "imageUrl": "http://example.com/image.png"
+}
+```
+
+All fields are required; `price` must be a non-negative number.
+
+### `GET /products/:id`
+
+```
+GET localhost:3000/products/1
+```
+
+Returns `404` if no product matches the given ID.
+
+### `GET /search`
+
+Fuzzy search by product name using Damerau-Levenshtein distance, so small typos or
+approximate spellings still return relevant matches. Query params: `term` (required),
+`page` (default `1`), `limit` (default `10`).
+
+```
+GET localhost:3000/search?term=billi&page=1&limit=10
+```
+
+## Testing POST requests manually
+
+`test-post.html` is a small standalone page with a form for sending `POST /products`
+requests without a separate frontend. Open it directly in a browser while the server
+is running.
 
 ## Configuration
 
