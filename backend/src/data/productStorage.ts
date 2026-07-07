@@ -12,7 +12,7 @@ class ProductStorage {
 
     getAll(page?: number, limit?: number): Product[] {
         if (page === undefined || limit === undefined) {
-            return this.products;
+            return [...this.products];
         }
         const start = (page - 1) * limit;
         return this.products.slice(start, start + limit);

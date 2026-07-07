@@ -21,4 +21,13 @@ app.get('/status', (req, res) => {
     });
 });
 
+app.use((req, res, _next) => {
+    res.status(404).json({ error: 'Endpoint not found.' });
+});
+
+app.use((err: Error, req: express.Request, res: express.Response, _next: express.NextFunction) => {
+    console.error(err.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+});
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

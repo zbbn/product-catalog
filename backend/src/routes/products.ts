@@ -10,19 +10,19 @@ export const productsRouter = Router();
 productsRouter.post('/products', (req: Request, res: Response) => {
     const body = req.body ?? {};
 
-    if (!body.name.trim() || typeof body.name !== 'string') {
+    if (typeof body.name !== 'string' || !body.name.trim()) {
         return res.status(400).json({ error: 'name is required' });
     }
-    if (!body.category.trim() || typeof body.category !== 'string') {
+    if (typeof body.category !== 'string' || !body.category.trim()) {
         return res.status(400).json({ error: 'category is required' });
     }
-    if (!body.description.trim() || typeof body.description !== 'string') {
+    if (typeof body.description !== 'string' || !body.description.trim()) {
         return res.status(400).json({ error: 'description is required' });
     }
     if (typeof body.price !== 'number' || body.price < 0) {
         return res.status(400).json({ error: 'price must be a positive number' });
     }
-    if (typeof body.imageUrl.trim() !== 'string' || !body.imageUrl) {
+    if (typeof body.imageUrl !== 'string' || !body.imageUrl.trim()) {
         return res.status(400).json({ error: 'imageUrl is required' });
     }
 
