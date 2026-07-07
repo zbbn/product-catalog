@@ -84,6 +84,9 @@ Query params: `page` (default `1`), `limit` (default `10`).
 ```
 GET localhost:3000/products?page=1&limit=10
 ```
+```
+curl "localhost:3000/products?page=1&limit=10"
+```
 
 ### `POST /products`
 
@@ -98,6 +101,8 @@ Body (JSON):
   "imageUrl": "http://example.com/image.png"
 }
 ```
+
+Or use the test-post.html file in the browser to add (before frontend is added).
 
 All fields are required; `price` must be a non-negative number.
 
