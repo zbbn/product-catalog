@@ -23,9 +23,9 @@ export function damerauLevenshtein(a: string, b: string): number {
             */
 
             d[i][j] = Math.min(
-                d[i - 1][j] + 1,
-                d[i][j - 1] + 1,
-                d[i - 1][j - 1] + cost
+                d[i - 1][j] + 1, // deletion
+                d[i][j - 1] + 1, // insertion
+                d[i - 1][j - 1] + cost // substitution
             );
 
             /* 
