@@ -8,10 +8,8 @@ function App() {
 	const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
 	useEffect(() => {
-		console.log('debouncedSearchTerm changed to:', debouncedSearchTerm);
 		if (!debouncedSearchTerm.trim()) return;
 
-		console.log('firing fetch for:', debouncedSearchTerm);
 		fetch(`/search?term=${encodeURIComponent(debouncedSearchTerm)}`)
 			.then((res) => res.json())
 	}, [debouncedSearchTerm]);
