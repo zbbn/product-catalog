@@ -1,14 +1,14 @@
 import type { Product } from '@product-catalog/shared';
-
-import './Productcard.css';
+import './ProductCard.css';
 
 interface ProductCardProps {
     product: Product;
+    onSelect: (productId: string) => void;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, onSelect }: ProductCardProps) {
     return (
-        <li className="product-card">
+        <li className="product-card" onClick={() => onSelect(product.id)}>
             <img
                 className="product-card__image"
                 src={product.imageUrl}
