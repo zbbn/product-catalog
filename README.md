@@ -118,6 +118,9 @@ approximate spellings still return relevant matches. Query params: `term` (requi
 ```
 GET localhost:3000/search?term=billi&page=1&limit=10
 ```
+```
+curl "localhost:3000/search?term=billi"
+```
 
 ## Testing POST requests manually
 
