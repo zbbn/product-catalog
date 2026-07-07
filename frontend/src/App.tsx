@@ -1,18 +1,32 @@
 import './App.css'
+
 import { useState, useEffect } from 'react';
+
 import { SearchBar } from './components/SearchBar';
+import { ProductList } from './components/ProductList';
+
 import { useDebounce } from './hooks/useDebounce';
+
+import type { Product } from '@product-catalog/shared';
 
 function App() {
 	const [searchTerm, setSearchTerm] = useState('');
+	const [products, setProducts] = useState<Product[]>([]);
 	const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
 	useEffect(() => {
-		if (!debouncedSearchTerm.trim()) return;
+		if (!debouncedSearchTerm.trim()) {
+			return;
+		}
 
 		fetch(`/search?term=${encodeURIComponent(debouncedSearchTerm)}`)
 			.then((res) => res.json())
+			.then((data) => {
+				setProducts(data.products);
+			});
 	}, [debouncedSearchTerm]);
+
+	const visibleProducts = debouncedSearchTerm.trim() ? products : [];
 
 	return (
 		<div className="app">
@@ -22,11 +36,10 @@ function App() {
 			</header>
 			<main>
 				<SearchBar value={searchTerm} onChange={setSearchTerm} />
+				<ProductList products={visibleProducts} />
 			</main>
 		</div >
 	);
 }
 
 export default App;
-
-
