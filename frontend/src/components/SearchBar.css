@@ -1,0 +1,38 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 24px 24px 0;
+}
+
+.search-bar__label {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #0058a3;
+    white-space: nowrap;
+}
+
+.search-bar__input {
+    flex: 1;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.1rem;
+    padding: 16px 18px;
+    border: 2px solid #d6d6d6;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.search-bar__input::placeholder {
+    color: #999999;
+}
+
+.search-bar__input:focus {
+    border-color: #0058a3;
+    box-shadow: 0 0 0 3px rgba(0, 88, 163, 0.15);
+}
