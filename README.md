@@ -63,7 +63,6 @@ product-catalog/
 
 - `npm run dev` - Start the development server with ts-node
 - `npm start` - Start the server with Node.js
-- `npm run build` - Compile TypeScript only, without starting the server
 
 ## How to use
 
