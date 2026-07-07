@@ -14,7 +14,7 @@ export function SearchBar({ value, onChange }: SearchBarProps) {
                 type="text"
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
-                placeholder="Type 'Billy', 'Kallax' or similar"
+                placeholder="Type 'Billy', 'Kallax' or ..."
                 aria-label="Search products by name"
                 autoFocus
             />
