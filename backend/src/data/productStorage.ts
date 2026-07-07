@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 import { mockProducts } from './mockProducts';
-import { NewProduct, Product } from '../types';
+import { NewProduct, Product } from '@product-catalog/shared';
 import { damerauLevenshtein } from '../search/damerauLevenshtein';
 
 /**

@@ -1,4 +1,4 @@
-import { Product } from '../types';
+import { Product } from '@product-catalog/shared';
 
 export const mockProducts: Product[] = [
     {
@@ -7,7 +7,8 @@ export const mockProducts: Product[] = [
         category: 'Storage',
         description: 'A classic adjustable bookcase that fits almost any room.',
         price: 699.00,
-        imageUrl: 'https://www.ikea.com/se/sv/p/billy-bokhylla-vit-00263850/'
+        //imageUrl: 'https://www.ikea.com/se/sv/p/billy-bokhylla-vit-00263850/'
+        imageUrl: 'https://placehold.co/300x300'
     },
     {
         id: '2',
