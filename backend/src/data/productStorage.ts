@@ -7,7 +7,7 @@ import { damerauLevenshtein } from '../search/damerauLevenshtein';
  * Manages the product data in memory, adds mock products on startup
  */
 
-class ProductStorage {
+export class ProductStorage {
     private products: Product[] = [...mockProducts];
 
     getAll(page?: number, limit?: number): Product[] {
