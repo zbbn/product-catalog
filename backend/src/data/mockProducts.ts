@@ -7,8 +7,7 @@ export const mockProducts: Product[] = [
         category: 'Storage',
         description: 'A classic adjustable bookcase that fits almost any room.',
         price: 699.00,
-        //imageUrl: 'https://www.ikea.com/se/sv/p/billy-bokhylla-vit-00263850/'
-        imageUrl: 'https://placehold.co/300x300'
+        imageUrl: 'https://placehold.co/300x300?text=Billy'
     },
     {
         id: '2',
@@ -16,7 +15,7 @@ export const mockProducts: Product[] = [
         category: 'Bedroom',
         description: 'A clean-lined bed frame with adjustable bed sides.',
         price: 1595.00,
-        imageUrl: 'https://www.ikea.com/se/sv/p/malm-sangstomme-vit-40378920/'
+        imageUrl: 'https://placehold.co/300x300?text=Malm'
     },
     {
         id: '3',
@@ -24,7 +23,7 @@ export const mockProducts: Product[] = [
         category: 'Storage',
         description: 'A versatile shelving unit that works as a room divider or TV bench.',
         price: 799.00,
-        imageUrl: 'https://www.ikea.com/se/sv/p/kallax-hylla-vit-80275887/'
+        imageUrl: 'https://placehold.co/300x300?text=Kallax'
     },
     {
         id: '4',
@@ -32,7 +31,7 @@ export const mockProducts: Product[] = [
         category: 'Living Room',
         description: 'A layer-glued bent birch frame that gives a slight bounce when you sit.',
         price: 995.00,
-        imageUrl: 'https://www.ikea.com/se/sv/p/poaeng-fatoelj-svartbrun-knisa-svart-s59240828/'
+        imageUrl: 'https://placehold.co/300x300?text=Poang'
     },
     {
         id: '5',
@@ -40,7 +39,7 @@ export const mockProducts: Product[] = [
         category: 'Living Room',
         description: 'A lightweight table that is easy to move, with a durable foil surface.',
         price: 249.00,
-        imageUrl: 'https://www.ikea.com/se/sv/p/lack-soffbord-vit-90449905/'
+        imageUrl: 'https://placehold.co/300x300?text=Lack'
     },
     {
         id: '6',
@@ -48,7 +47,7 @@ export const mockProducts: Product[] = [
         category: 'Living Room',
         description: 'A three-seat sofa with a removable, washable cover.',
         price: 9495.00,
-        imageUrl: 'https://www.ikea.com/se/sv/p/ektorp-hoernsoffa-4-sits-hakebo-moerkgra-s09508985/'
+        imageUrl: 'https://placehold.co/300x300?text=Ektorp'
     },
     {
         id: '7',
@@ -56,7 +55,7 @@ export const mockProducts: Product[] = [
         category: 'Bedroom',
         description: 'A solid wood dresser with eight drawers, finished with a stain and clear glaze.',
         price: 3995.00,
-        imageUrl: 'https://www.ikea.com/se/sv/p/hemnes-byra-med-8-lador-vitbets-10239280/'
+        imageUrl: 'https://placehold.co/300x300?text=Hemnes'
     },
     {
         id: '8',
@@ -64,7 +63,7 @@ export const mockProducts: Product[] = [
         category: 'Office',
         description: 'A high-back office chair with built-in headrest and lumbar support.',
         price: 2495.00,
-        imageUrl: 'https://www.ikea.com/se/sv/p/markus-kontorsstol-vissle-moerkgra-70261150/'
+        imageUrl: 'https://placehold.co/300x300?text=Markus'
     },
     {
         id: '9',
@@ -72,7 +71,7 @@ export const mockProducts: Product[] = [
         category: 'Office',
         description: 'A simple tabletop that pairs with various leg options.',
         price: 395.00,
-        imageUrl: 'https://www.ikea.com/se/sv/p/linnmon-adils-bord-vit-s29932181/'
+        imageUrl: 'https://placehold.co/300x300?text=Linnmon'
     },
     {
         id: '10',
@@ -80,7 +79,7 @@ export const mockProducts: Product[] = [
         category: 'Decor',
         description: 'A lifelike potted plant that needs no watering or sunlight.',
         price: 699.00,
-        imageUrl: 'https://www.ikea.com/se/sv/p/fejka-konstgjord-krukvaext-inom-utomhus-kentiapalm-60610606//'
+        imageUrl: 'https://placehold.co/300x300?text=Fejka'
     },
     {
         id: '11',
@@ -88,7 +87,7 @@ export const mockProducts: Product[] = [
         category: 'Electronics',
         description: 'Rechargeable AA batteries that can be charged hundreds of times.',
         price: 99.00,
-        imageUrl: 'https://www.ikea.com/se/sv/p/ladda-laddningsbart-batteri-hr06-aa-1-2v-50504692/'
+        imageUrl: 'https://placehold.co/300x300?text=Ladda'
     },
     {
         id: '12',
@@ -96,6 +95,6 @@ export const mockProducts: Product[] = [
         category: 'Lighting',
         description: 'An adjustable metal lamp with a directional shade, inspired by old workshop lamps.',
         price: 399.00,
-        imageUrl: 'https://www.ikea.com/se/sv/p/ranarp-arbetslampa-off-white-30231315/'
+        imageUrl: 'https://placehold.co/300x300?text=Ranarp'
     },
 ]
