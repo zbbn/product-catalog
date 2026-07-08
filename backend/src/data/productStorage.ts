@@ -4,7 +4,7 @@ import { NewProduct, Product } from '@product-catalog/shared';
 import { damerauLevenshtein } from '../search/damerauLevenshtein';
 
 /**
- * Manages the product data in memory, adds mockproducts on startup
+ * Manages the product data in memory, adds mock products on startup
  */
 
 class ProductStorage {
@@ -35,7 +35,7 @@ class ProductStorage {
     /**
      * Searches for product by name using the Damerau-Levenshtein distance algorithm and returns 
      * a list of products within a certain distance threshold (a third of the query length and at least 1 to allow for shorter search terms)
-    */
+     */
 
     search(term: string): Product[] {
         const query = term.trim().toLowerCase();

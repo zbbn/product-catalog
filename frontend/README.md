@@ -1,77 +1,81 @@
-# React + TypeScript + Vite
+# Product Catalog - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React frontend for the IKEA product catalog application built with TypeScript and Vite.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js (v16 or higher)
+- npm
+- Backend running on port 3000
 
-## React Compiler
+## Installation
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Install the project dependencies:
 
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Running the Server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Development Mode
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+To run the frontend in development mode with HMR:
+
+```bash
+npm run dev
+```
+
+The server will start on **http://localhost:5173**
+
+The Vite dev server proxies `/search`, `/products`, and `/status` to the backend at `localhost:3000`.
+
+## Available Scripts
+
+- `npm run dev` - Start the development server with Vite
+- `npm run build` - Build for production
+- `npm run preview` - Preview the production build
+- `npm run lint` - Run ESLint
+
+## Project Structure
 
 ```
+frontend/
+├── src/
+│   └── components/
+│       └── SearchBar.tsx           # Text input for product search
+│       └── SearchBar.css
+│       └── ProductList.tsx         # Responsive grid of product cards
+│       └── ProductList.css
+│       └── ProductCard.tsx         # Single product summary card
+│       └── ProductCard.css
+│       └── ProductDetail.tsx       # Full product view with back button
+│       └── ProductDetail.css
+│   └── hooks/
+│       └── useDebounce.tsx         # Delays value updates to avoid spamming API
+│   └── App.tsx                     # Main component, holds all state
+│   └── App.css
+│   └── index.css                   # Global styles, CSS variables, dark mode
+│   └── main.tsx                    # React entry point
+├── index.html
+├── vite.config.ts                  # Vite config + API proxy setup
+├── package.json
+├── tsconfig.json
+└── README.md                       # This file
+```
+
+## How it works
+
+No router library - navigation is conditional rendering in `App.tsx`. If a product is selected it shows `ProductDetail`, otherwise shows search + product list.
+
+State is just `useState` in App. Search is debounced (500ms) before hitting the API.
+
+Types are shared with the backend via the `@product-catalog/shared` workspace package.
+
+## Styling
+
+Plain CSS with BEM-ish naming. IKEA colors (blue/yellow). Responsive grid. Dark mode via CSS custom properties.
+
+## License
+
+ISC

@@ -14,6 +14,7 @@ function App() {
 	const [products, setProducts] = useState<Product[]>([]);
 	const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
 	const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
 	const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
 	useEffect(() => {

@@ -6,6 +6,9 @@ interface ProductCardProps {
     onSelect: (productId: string) => void;
 }
 
+/**
+ * Clickable card that shows a product summary and clicking opens the detail view
+ */
 export function ProductCard({ product, onSelect }: ProductCardProps) {
     return (
         <li className="product-card" onClick={() => onSelect(product.id)}>

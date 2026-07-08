@@ -74,8 +74,8 @@ productsRouter.get('/search', (req: Request, res: Response) => {
 });
 
 /**
-* Gets all products from the productStorage with pagination
-*/
+ * Gets all products from the productStorage with pagination
+ */
 
 productsRouter.get('/products', (req: Request, res: Response) => {
     const page = req.query.page ? Number(req.query.page) : 1;

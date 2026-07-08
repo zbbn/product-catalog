@@ -6,6 +6,10 @@ interface ProductDetailProps {
     onBack: () => void;
 }
 
+/**
+ * Full product page that shows all details and a back button to return to search
+ */
+
 export function ProductDetail({ product, onBack }: ProductDetailProps) {
     return (
         <div className="product-detail">
