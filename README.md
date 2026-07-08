@@ -53,6 +53,8 @@ The server will start on **http://localhost:3000**
 
 ```
 product-catalog/
+├── shared/
+│   └── types.ts                        # Interface with product types
 ├── backend/
 │   └── src/
 │       └── data/
@@ -63,18 +65,26 @@ product-catalog/
 │       └── search/
 │           └── damerauLevenshtein.ts   # Fuzzy search algorithm
 │       └── server.ts                   # Express server entry point
-│       └── types.ts                    # Interface with product types      
+├── frontend/
+│   └── src/
+│       └── components/
+│           └── ProductCard.tsx
+│           └── ProductCard.css
+│           └── ProductDetail.tsx
+│           └── ProductDetail.css
+│           └── ProductList.tsx
+│           └── ProductList.css
+│           └── SearchBar.tsx
+│           └── SearchBar.css
+│       └── hooks/
+│           └── useDebounce.tsx
+│       └── App.tsx         
+│       └── App.css
+│       └── index.css
+│       └── main.tsx
 ├── package.json            # Project dependencies and scripts
 ├── tsconfig.json          # TypeScript configuration
 ├── .gitignore             # Git ignore rules
-├── frontend/
-│   └── src/
-│           └── App.tsx         
-│           └── App.css
-│           └── index.css
-│           └── main.tsx
-│       └── components/
-│           └── SearchBar.tsx   
 └── README.md              # This file
 ```
 
