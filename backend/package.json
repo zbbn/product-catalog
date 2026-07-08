@@ -5,7 +5,8 @@
     "main": "backend/src/server.ts",
     "scripts": {
         "start": "tsc && node dist/src/server.js",
-        "dev": "npx ts-node src/server.ts"
+        "dev": "npx ts-node src/server.ts",
+        "test": "vitest run"
     },
     "keywords": [],
     "author": "",
